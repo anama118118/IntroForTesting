@@ -22,6 +22,7 @@ class ViewController: UIViewController {
 
     func numberOfVowels(_ str: String) -> Int {
         let vowels: [Character] = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+
 //        //Start with the longest form of the function
 //        return str.characters.reduce(0) { (result, char) -> Int in
 //            if vowels.contains(char) {
@@ -39,29 +40,38 @@ class ViewController: UIViewController {
 //        }
 //        return vowelCounter
  
-        //Use Super swift
+//      //Use Super swift
         return str.characters.reduce(0){
             $0 + (vowels.contains($1) ? 1: 0)
         }
-        
     }
     
     func capitalizeWords(_ str: String) -> String {
-        let stringArray = str.components(separatedBy: " ")
-        var arrStringToReturn = [String]()
-        for s in stringArray {
-            var string = ""
-            for (index, c) in s.characters.enumerated() {
-                if index == 0 {
-                    string += String(c).capitalized
-                } else {
-                    string += String(c)
-                }
-            }
-            arrStringToReturn.append(string)
+//        //Start with the longest form of the function
+//        let stringArray = str.components(separatedBy: " ")
+//        var arrStringToReturn = [String]()
+//        for s in stringArray {
+//            var string = ""
+//            for (index, c) in s.characters.enumerated() {
+//                if index == 0 {
+//                    string += String(c).capitalized
+//                } else {
+//                    string += String(c)
+//                }
+//            }
+//            arrStringToReturn.append(string)
+//        }
+//        return arrStringToReturn.joined(separator: " ")
+        
+//        //Improve with the longest form of the function
+        let words = str.components(separatedBy: " ")
+        var capitalizedString = ""
+        for word in words {
+            capitalizedString += (word.capitalized + " ")
         }
-        return arrStringToReturn.joined(separator: " ")
+        capitalizedString = capitalizedString.trimmingCharacters(in: CharacterSet(charactersIn: " "))
+        
+        return capitalizedString
     }
-
 }
 
